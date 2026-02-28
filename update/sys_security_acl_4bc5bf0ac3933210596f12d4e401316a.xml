@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description>Allow read for records in x_58872_needit_needit, for users with role x_58872_needit.needit_user, and if the ACL script returns true.</description>
+        <local_or_existing>Existing</local_or_existing>
+        <name>x_58872_needit_needit</name>
+        <operation display_value="read">read</operation>
+        <script><![CDATA[// ACL脚本核心逻辑：校验当前操作的记录是否为新建，且是交互式会话
+// current是ServiceNow ACL的内置对象，代表当前被操作的记录
+// 核心判断：基于当前操作的记录（而非手动新建的记录）
+if (current.isNewRecord() && gs.getSession().isInteractive()) {
+  answer = true; // 有权限
+} else {
+  answer = false; // 无权限
+}]]></script>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-28 05:31:35</sys_created_on>
+        <sys_id>4bc5bf0ac3933210596f12d4e401316a</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>x_58872_needit_needit</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_security_acl_4bc5bf0ac3933210596f12d4e401316a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-28 06:43:25</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>
